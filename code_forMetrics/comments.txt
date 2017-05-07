@@ -1,0 +1,32 @@
+from below summary: we can use AUC_Borji or AUC_Judd with binary fixation map
+
+checked all for saliencymap=fixationMap
+
+AUC_Borji:  0.5350
+AUC_Judd:  -0.2736 (when jitter=0 bcz jitter=1(default), error)
+	    1 when made jitter 1 and changed
+	    saliencyMap = saliencyMap+rand(size(saliencyMap))/10000000;
+	    to
+	    saliencyMap = double(saliencyMap)+rand(size(saliencyMap))/10000000;
+            in code
+
+	    1 also when change to
+	    saliencyMap = im2double(saliencyMap)+rand(size(saliencyMap))/10000000;
+NSS	    0.4293
+similarity: 1
+
+
+if first do fixationMap=im2bw(saliencymap);
+
+AUC_Borji:  0.9601
+AUC_Judd:   0.9568 (when jitter=0 bcz jitter=1(default), error)
+	    1 when made jitter 1 and changed
+	    saliencyMap = saliencyMap+rand(size(saliencyMap))/10000000;
+	    to
+	    saliencyMap = double(saliencyMap)+rand(size(saliencyMap))/10000000;
+            in code
+
+	    1 also when change to
+	    saliencyMap = im2double(saliencyMap)+rand(size(saliencyMap))/10000000;
+NSS	    2.9409
+similarity  0.5594
