@@ -6,12 +6,13 @@ addpath(genpath('./edison_matlab_interface'));
 
 addpath('./audioread');
 
-
 % demo script av saliency
 
 videoFiles = dir( '../Data/Video/');
 str = {videoFiles.name};
 str(1:2) = [];
+
+scores = [];
 
 while(1)
     [selection_idx, selection] = listdlg( 'PromptString','Select a video to run AV Saliency code:','SelectionMode','single','ListSize',[300,300],'Name','Select Video','ListString',str);
@@ -29,7 +30,8 @@ while(1)
         
         display 'Evaluate ...';
         %evaluate( video_name);
-        AVS_EvalModel(video_name);
+        score = AVS_EvalModel_v1(video_name)
+        scores = [scores; score];        
     end
     m = input( 'Do you want to run code for another video, Y/N [Y]:','s');
     if m == 'N'
@@ -40,3 +42,5 @@ while(1)
         str(1:2) = [];
     end
 end
+
+scores

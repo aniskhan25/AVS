@@ -1,8 +1,5 @@
 function compute_avSaliencyMap(video_name)
 
-%% audioVisual Saliency
-display 'Compute audio visual saliency maps ...'
-
 audioSaliencyDir = strcat('../Results/audioSaliency/',video_name, '/');
 motioMapsDir = strcat('../Results/motionMaps/',video_name, '/');
 %visualSaliencyDir = strcat('./visualSaliency/',video_name, '/');
