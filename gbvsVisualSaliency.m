@@ -2,7 +2,7 @@ function gbvsVisualSaliency( video_name )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
-clearvars -except video_name frameRate; clc;
+clearvars -except video_name frameRate; %clc;
 
 addpath('./visualSal');
 
