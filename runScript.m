@@ -6,9 +6,13 @@ addpath(genpath('./edison_matlab_interface'));
 
 addpath('./audioread');
 
+addpath(genpath('./haller/src'));
+
 % demo script av saliency
 
-videoFiles = dir( '../Data/Video/');
+datapath = ['/home/anis/Documents/datasets/DIEM/'];
+
+videoFiles = dir(datapath);
 str = {videoFiles.name};
 str(1:2) = [];
 
@@ -19,18 +23,24 @@ while(1)
     
     if selection ~= 0
         videofolder_= str( selection_idx);
-        video_name  = cell2mat( videofolder_);
-        audio       = strcat( video_name, '.wav');
+        
+        video_name = cell2mat( videofolder_);
+        
+        video = [datapath video_name '/video/' video_name '.mp4'];
+        audio = [datapath video_name '/audio/' video_name '.wav'];
         
         display 'Compute audio visual saliency';
-        compute_audioVisualSaliency( video_name, audio);
+        %avSaliency = compute_audioVisualSaliency( video, audio);
         
-        %%%display 'Preparing ground truth ...';
-        %%%writeGroundTruth( video_name);
+        %outDir = [datapath video_name '/'];
+        %save([outDir 'avSaliency'],'avSaliency');
+        
+        display 'Preparing ground truth ...';
+        writeGroundTruth( video_name);
         
         display 'Evaluate ...';
         %evaluate( video_name);
-        score = AVS_EvalModel_v1(video_name)
+        score = AVS_EvalModel_v1(datapath,video_name)
         scores = [scores; score];        
     end
     m = input( 'Do you want to run code for another video, Y/N [Y]:','s');

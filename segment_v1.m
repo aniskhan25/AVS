@@ -1,14 +1,15 @@
-function segment_v1 (video_name)
+function segment_v1 (video)
 
-if exist(['../Results/segment_output/' video_name], 'dir')
+[idir,~,~] = fileparts(video);
+
+if exist([idir '/segment_output/'], 'dir')
 else
-    mkdir(['../Results/segment_output/' video_name])
+    mkdir([idir '/segment_output/']);
 end
 
-%inDir = stracat('./output/',video_name, '/');
-inDir = strcat('../Results/OFthoutput/',video_name, '/');
-%inDir = strcat('./Video/',video_name, '/');
-outDir = strcat('../Results/segment_output/',video_name, '/');
+inDir = [idir '/'];
+outDir = [idir '/segment_output/'];
+
 imgs = dir([inDir '*.jpg']);
 
 len = length(imgs);

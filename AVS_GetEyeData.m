@@ -5,7 +5,7 @@ SCR_W = 1280; SCR_H = 960;
 
 NO_OF_FRAMES = 300;
 
-%video_name = '50_people_brooklyn_1280x720'; MOV_W = 1280; MOV_H = 720;
+video_name = '50_people_brooklyn_1280x720'; MOV_W = 1280; MOV_H = 720;
 %video_name = '50_people_brooklyn_no_voices_1280x720'; MOV_W = 1280; MOV_H = 720;
 %video_name = '50_people_london_1280x720'; MOV_W = 1280; MOV_H = 720;
 %video_name = '50_people_london_no_voices_1280x720'; MOV_W = 1280; MOV_H = 720;
@@ -17,7 +17,7 @@ NO_OF_FRAMES = 300;
 %video_name = 'ami_ib4010_left_720x576'; MOV_W = 720; MOV_H = 576;
 %video_name = 'ami_is1000a_closeup_720x576'; MOV_W = 720; MOV_H = 576;
 %video_name = 'ami_is1000a_left_720x576'; MOV_W = 720; MOV_H = 576;
-video_name = 'Antarctica_landscape_1246x720'; MOV_W = 1246; MOV_H = 720;
+%video_name = 'Antarctica_landscape_1246x720'; MOV_W = 1246; MOV_H = 720;
 %video_name = 'arctic_bears_1066x710'; MOV_W = 1066; MOV_H = 710;
 %video_name = 'basketball_of_sorts_960x720'; MOV_W = 960; MOV_H = 720;
 %video_name = 'BBC_life_in_cold_blood_1278x710'; MOV_W = 1278; MOV_H = 710;
@@ -87,7 +87,7 @@ video_name = 'Antarctica_landscape_1246x720'; MOV_W = 1246; MOV_H = 720;
 %video_name = 'tv_uni_challenge_final_1280x712'; MOV_W = 1280; MOV_H = 712;
 %video_name = 'university_forum_construction_ionic_1280x720'; MOV_W = 1280; MOV_H = 720;
 
-root = ['/home/anis/avs/Data/GT/' video_name '/event_data/'];
+root = ['/home/anis/Documents/datasets/DIEM/' video_name '/event_data/'];
 
 s = dir([root '*.txt']);
 file_list = {s.name}'; 

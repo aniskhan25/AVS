@@ -1,14 +1,6 @@
 function writeGroundTruth( video_name )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
 
-% example call to this function
-%input='1.mp4';
-%extractFrames(input);
-clearvars -except video_name frameRate;
-clc;
-
-% each ground truth video should be placed iin its named folder inside
+% each ground truth video should be placed in its named folder inside
 % code/GT
 Dir=strcat('../Data/GT/',video_name,'/');
 

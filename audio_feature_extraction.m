@@ -1,21 +1,15 @@
-function audio_feature_extraction( audio, video_name)
+function audio_feature_extraction( audio, numOfFrames)
 
 % % usage
 % audio='basketball_of_sorts_960x720.wav';
 % video_name='basketball_of_sorts_960x720.mp4';
 % audio_feature_extraction( input, video )
 
-clearvars -except audio video_name;
+clearvars -except audio numOfFrames;
 %clc;
 
-audioDir='../Data/Audio/';
-videoDir=strcat('../Data/Video/',video_name, '/');
-v=VideoReader([videoDir video_name '.mp4']);
-numOfFrames=v.NumberOfFrames;
-frameRate=v.FrameRate;
-
 %read file; use any available short length file here
-[f,fs]=audioread([audioDir audio]);
+[f,~]=audioread(audio);
 
 %no. of samples
 totalNoOfSamples=length(f);
@@ -35,7 +29,7 @@ while i < totalNoOfSamples-noOfSamplesPerFrame
     frames(:,n)=f(i:k);
     n=n+1;
     i=i+overlappingSamples;
-end;
+end
 
 %deleting last zero column of frames
 frames(:,numOfFrames)=[];
@@ -45,12 +39,15 @@ audio_features=zeros(1,numOfFrames-1);
 
 for i=1:numOfFrames-1
     audio_features(1,i)=conv2(trapz(trapz(abs(spectrogram(frames(:,i))))),h,'same');
-end;
+end
 
 %s=strsplit(audio,'.');
-s = strread(audio,'%s','delimiter','.');
+%s = strread(audio,'%s','delimiter','.');
+%name=strcat(s(1),'.mat');
 
-name=strcat(s(1),'.mat');
-save([audioDir name{1}],'audio_features');
+[dir,name,~] = fileparts(audio);
+
+save([dir '/' name '.mat'],'audio_features');
+
 end
 

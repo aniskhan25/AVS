@@ -1,9 +1,9 @@
-function scores = AVS_EvalModel_v1(videoname)
+function scores = AVS_EvalModel_v1(datapath,videoname)
 
 addpath('code_forMetrics');
 
-event_dir = ['/home/anis/avs/Data/GT/' videoname '/event_data/'];
-sal_dir   = ['/home/anis/avs/Results/AV_Saliency/' videoname '/gbvs/'];
+event_dir = [datapath videoname '/event_data/'];
+sal_dir   = [datapath videoname];
 
 load([event_dir 'eye_data']);
 load([sal_dir 'avSaliency']);

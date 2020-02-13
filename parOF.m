@@ -1,21 +1,23 @@
-function parOF( video_name )
+function parOF( video )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 % read all images in current directory
-clearvars -except video_name frameRate;% clc;
+clearvars -except video frameRate;% clc;
 
-if exist(['../Results/OFoutput/' video_name], 'dir')
+[idir,~,~] = fileparts(video);
+
+if exist([idir '/OFoutput/'], 'dir')
 else
-    mkdir(['../Results/OFoutput/' video_name])
+    mkdir([idir '/OFoutput/'])
 end
-if exist(['../Results/OFthoutput/' video_name], 'dir')
+if exist([idir '/OFthoutput/'], 'dir')
 else
-    mkdir(['../Results/OFthoutput/' video_name])
+    mkdir([idir '/OFthoutput/'])
 end
 
-inDir = strcat('../Data/Video/',video_name, '/');
-outDir=strcat('../Results/OFoutput/',video_name, '/');
-thoutDir=strcat('../Results/OFthoutput/',video_name, '/');
+inDir = [idir '/'];
+outDir = [idir '/OFoutput/'];
+thoutDir = [idir '/OFthoutput/'];
 origImgs = dir([inDir '*.jpg']);
 ImgsBefore = circshift(origImgs,1);
 ImgsAfter = circshift(origImgs,-1);
