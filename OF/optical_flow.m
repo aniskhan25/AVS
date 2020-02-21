@@ -1,4 +1,5 @@
 function flow = optical_flow( img1,img2 )
+addpath('./OF/mex');
 
 im1 = im2double(img1);
 im2 = im2double(img2);
@@ -18,9 +19,11 @@ para = [alpha,ratio,minWidth,nOuterFPIterations,nInnerFPIterations,nSORIteration
 
 % this is the core part of calling the mexed dll file for computing optical flow
 % it also returns the time that is needed for two-frame estimation
+% @anis. Compiled on ubuntu using
+% mex Coarse2FineTwoFrames.cpp OpticalFlow.cpp GaussianPyramid.cpp
 %tic;
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
-%toc;
+%toc
 
 % figure;imshow(im1);figure;imshow(warpI2);
 

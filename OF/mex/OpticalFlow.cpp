@@ -8,7 +8,8 @@
 using namespace std;
 
 #ifndef _MATLAB
-	bool OpticalFlow::IsDisplay=true;
+	//bool OpticalFlow::IsDisplay=true;
+    bool OpticalFlow::IsDisplay=false; // @anis
 #else
 	bool OpticalFlow::IsDisplay=false;
 #endif
@@ -1367,9 +1368,8 @@ void OpticalFlow::estLaplacianNoise(const DImage& Im1,const DImage& Im2,Vector<d
 	{
 		if(total[k]==0)
 		{
-            // anis. verbose for frames with no motion
-			//cout<<"All the pixels are invalid in estimation Laplacian noise!!!"<<endl;
-			//cout<<"Something severely wrong happened!!!"<<endl;
+			cout<<"All the pixels are invalid in estimation Laplacian noise!!!"<<endl;
+			cout<<"Something severely wrong happened!!!"<<endl;
 			para[k] = 0.001;
 		}
 		else
